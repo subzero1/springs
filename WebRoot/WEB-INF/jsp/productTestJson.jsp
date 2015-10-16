@@ -9,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'productTestJson.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,12 +19,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			alert("测试通过");
+		});
+		function btnclick(){  
+			$.ajax({ 
+
+     		    type: 'POST', 
+
+    			url: 'jsonTest.do' , 
+
+    			data: {name:'sgssssg',
+    			description:'测试同股哟',
+    			price:'4234' } , 
+	
+   				success: function(data){
+   					alert("");
+   				 } , 
+
+    			dataType: 'json' 
+		    }); 
+		}
+	</script>
   </head>
   
   <body>
     This is my JSP page. <br>
- 	  <a href="productInput.do"> 添加商品</a> <br>
- 	  <a href="productInput2.do"> 添加商品2</a> <br>
- 	  <a href="productTestJson.do"> 测试json支持</a> <br>
+    <input type="button" class="json" id="json" onClick="btnclick()"/>
   </body>
 </html>
